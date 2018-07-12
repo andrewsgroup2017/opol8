@@ -101,12 +101,12 @@ export default {
       this.loading = true
       // console.log(this.user.id)
       // console.log(this.user.databaseKey)
-      const clockedStatus = this.axios.post('https://wt-4b2720bcf712029a2fa08942c7e9bd70-0.sandbox.auth0-extend.com/humanity', { id: this.user.id })
+      // const clockedStatus = this.axios.post('https://wt-4b2720bcf712029a2fa08942c7e9bd70-0.sandbox.auth0-extend.com/humanity', { id: this.user.id })
       // console.log('cs ', clockedStatus)
       // this.user.clockedIn = clockedStatus
       let print = window.localStorage.getItem('fingerprint')
       const loc = await utils.location
-      let serverClockStatus = await this.axios.post('http://localhost:3000/timeclocks', { TimeClock: { action: 'checkStatus', employeeId: this.user.id, databaseKey: this.user.databaseKey, currentDevice: print, location: loc }})
+      let serverClockStatus = await this.axios.post('https://wt-4b2720bcf712029a2fa08942c7e9bd70-0.sandbox.auth0-extend.com/api', { TimeClock: { action: 'checkStatus', employeeId: this.user.id, databaseKey: this.user.databaseKey, currentDevice: print, location: loc }})
 
       // let serverClockedStatus = this.axios.post('http://localhost:3000/timeclocks', { TimeClock: { action: 'clockIn', employeeId: this.user.id, currentDevice: this.user.id }})
 

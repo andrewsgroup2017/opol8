@@ -20,14 +20,10 @@ export default {
   name: 'Crews',
   components: {
     crewlist: CrewList,
-
+    deviceId: {}
   },
   data: () => ({
     loading: false,
-    model: {
-      username: 'admin@isockde.com',
-      password: 'password'
-    }
   }),
 
   methods: {
@@ -37,6 +33,10 @@ export default {
         this.$router.push('/dashboard')
       }, 1000)
     }
+  },
+  mounted () {
+    this.deviceId = window.localStorage.getItem('fingerprint')
+
   }
 }
 </script>
