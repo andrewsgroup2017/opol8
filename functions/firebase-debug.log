@@ -1,0 +1,143 @@
+[debug] [2018-07-11T00:44:09.425Z] ----------------------------------------------------------------------
+[debug] [2018-07-11T00:44:09.427Z] Command:       /home/ash/.nvm/versions/node/v9.11.2/bin/node /home/ash/.yarn/bin/firebase serve --only functions
+[debug] [2018-07-11T00:44:09.427Z] CLI Version:   3.19.3
+[debug] [2018-07-11T00:44:09.427Z] Platform:      linux
+[debug] [2018-07-11T00:44:09.427Z] Node Version:  v9.11.2
+[debug] [2018-07-11T00:44:09.427Z] Time:          Tue Jul 10 2018 19:44:09 GMT-0500 (CDT)
+[debug] [2018-07-11T00:44:09.427Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-07-11T00:44:09.435Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-07-11T00:44:09.435Z] > authorizing via signed-in user
+[debug] [2018-07-11T00:44:09.436Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-07-11T00:44:09.437Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/amun8a0Jhtluru5ZtPKx59ysDwx0noABMQB4acS0FHY',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Tue Jul 10 2018 19:44:09 GMT-0500 (CDT)
+[debug] [2018-07-11T00:44:09.593Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-11T00:44:09.604Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/opol7dev  
+  
+ Tue Jul 10 2018 19:44:09 GMT-0500 (CDT)
+[debug] [2018-07-11T00:44:09.841Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-11T00:44:09.842Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/opol7dev/tokens  
+  
+ Tue Jul 10 2018 19:44:09 GMT-0500 (CDT)
+[debug] [2018-07-11T00:44:10.173Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-11T00:44:10.174Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/opol7dev  
+  
+ Tue Jul 10 2018 19:44:10 GMT-0500 (CDT)
+[debug] [2018-07-11T00:44:10.338Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/home/ash/sprint3'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2018-07-11T00:44:10.853Z] Fetching environment
+[debug] [2018-07-11T00:44:10.855Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/1099037767188:getServerAppConfig  
+  
+ Tue Jul 10 2018 19:44:10 GMT-0500 (CDT)
+[debug] [2018-07-11T00:44:11.212Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-11T00:44:11.212Z] Starting @google-cloud/functions-emulator
+[debug] [2018-07-11T00:44:11.252Z] Parsing function triggers
+[debug] [2018-07-11T00:44:24.869Z] ----------------------------------------------------------------------
+[debug] [2018-07-11T00:44:24.871Z] Command:       /home/ash/.nvm/versions/node/v9.11.2/bin/node /home/ash/.yarn/bin/firebase serve --only functions
+[debug] [2018-07-11T00:44:24.871Z] CLI Version:   3.19.3
+[debug] [2018-07-11T00:44:24.871Z] Platform:      linux
+[debug] [2018-07-11T00:44:24.871Z] Node Version:  v9.11.2
+[debug] [2018-07-11T00:44:24.871Z] Time:          Tue Jul 10 2018 19:44:24 GMT-0500 (CDT)
+[debug] [2018-07-11T00:44:24.871Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-07-11T00:44:24.879Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-07-11T00:44:24.879Z] > authorizing via signed-in user
+[debug] [2018-07-11T00:44:24.881Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/opol7dev  
+  
+ Tue Jul 10 2018 19:44:24 GMT-0500 (CDT)
+[debug] [2018-07-11T00:44:25.140Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-11T00:44:25.141Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/opol7dev/tokens  
+  
+ Tue Jul 10 2018 19:44:25 GMT-0500 (CDT)
+[debug] [2018-07-11T00:44:25.433Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-11T00:44:25.435Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/opol7dev  
+  
+ Tue Jul 10 2018 19:44:25 GMT-0500 (CDT)
+[debug] [2018-07-11T00:44:25.598Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/home/ash/sprint3'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2018-07-11T00:44:26.099Z] Fetching environment
+[debug] [2018-07-11T00:44:26.101Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/1099037767188:getServerAppConfig  
+  
+ Tue Jul 10 2018 19:44:26 GMT-0500 (CDT)
+[debug] [2018-07-11T00:44:26.392Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-11T00:44:26.393Z] Starting @google-cloud/functions-emulator
+[debug] [2018-07-11T00:44:27.438Z] Parsing function triggers
+[info] ✔  functions: submitTimeClock: http://localhost:5000/opol7dev/us-central1/submitTimeClock
+[debug] [2018-07-11T00:46:26.868Z] ----------------------------------------------------------------------
+[debug] [2018-07-11T00:46:26.872Z] Command:       /home/ash/.nvm/versions/node/v9.11.2/bin/node /home/ash/.yarn/bin/firebase serve --only functions
+[debug] [2018-07-11T00:46:26.872Z] CLI Version:   3.19.3
+[debug] [2018-07-11T00:46:26.872Z] Platform:      linux
+[debug] [2018-07-11T00:46:26.872Z] Node Version:  v9.11.2
+[debug] [2018-07-11T00:46:26.872Z] Time:          Tue Jul 10 2018 19:46:26 GMT-0500 (CDT)
+[debug] [2018-07-11T00:46:26.872Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-07-11T00:46:26.880Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-07-11T00:46:26.880Z] > authorizing via signed-in user
+[debug] [2018-07-11T00:46:26.881Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/opol7dev  
+  
+ Tue Jul 10 2018 19:46:26 GMT-0500 (CDT)
+[debug] [2018-07-11T00:46:27.275Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-11T00:46:27.276Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/opol7dev/tokens  
+  
+ Tue Jul 10 2018 19:46:27 GMT-0500 (CDT)
+[debug] [2018-07-11T00:46:27.613Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-11T00:46:27.615Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/opol7dev  
+  
+ Tue Jul 10 2018 19:46:27 GMT-0500 (CDT)
+[debug] [2018-07-11T00:46:27.787Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/home/ash/sprint3'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2018-07-11T00:46:28.311Z] Fetching environment
+[debug] [2018-07-11T00:46:28.313Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/1099037767188:getServerAppConfig  
+  
+ Tue Jul 10 2018 19:46:28 GMT-0500 (CDT)
+[debug] [2018-07-11T00:46:28.632Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-11T00:46:28.633Z] Starting @google-cloud/functions-emulator
+[debug] [2018-07-11T00:46:28.676Z] Parsing function triggers
+[debug] [2018-07-11T00:46:39.139Z] ----------------------------------------------------------------------
+[debug] [2018-07-11T00:46:39.141Z] Command:       /home/ash/.nvm/versions/node/v9.11.2/bin/node /home/ash/.yarn/bin/firebase serve --only functions
+[debug] [2018-07-11T00:46:39.141Z] CLI Version:   3.19.3
+[debug] [2018-07-11T00:46:39.141Z] Platform:      linux
+[debug] [2018-07-11T00:46:39.141Z] Node Version:  v9.11.2
+[debug] [2018-07-11T00:46:39.141Z] Time:          Tue Jul 10 2018 19:46:39 GMT-0500 (CDT)
+[debug] [2018-07-11T00:46:39.141Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-07-11T00:46:39.148Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-07-11T00:46:39.148Z] > authorizing via signed-in user
+[debug] [2018-07-11T00:46:39.150Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/opol7dev  
+  
+ Tue Jul 10 2018 19:46:39 GMT-0500 (CDT)
+[debug] [2018-07-11T00:46:39.423Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-11T00:46:39.424Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/opol7dev/tokens  
+  
+ Tue Jul 10 2018 19:46:39 GMT-0500 (CDT)
+[debug] [2018-07-11T00:46:39.734Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-11T00:46:39.736Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/opol7dev  
+  
+ Tue Jul 10 2018 19:46:39 GMT-0500 (CDT)
+[debug] [2018-07-11T00:46:39.877Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/home/ash/sprint3'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2018-07-11T00:46:40.270Z] Fetching environment
+[debug] [2018-07-11T00:46:40.271Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/1099037767188:getServerAppConfig  
+  
+ Tue Jul 10 2018 19:46:40 GMT-0500 (CDT)
+[debug] [2018-07-11T00:46:40.618Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-11T00:46:40.618Z] Starting @google-cloud/functions-emulator
+[debug] [2018-07-11T00:46:41.664Z] Parsing function triggers
+[info] ✔  functions: submitTimeClock: http://localhost:5000/opol7dev/us-central1/submitTimeClock

@@ -1,0 +1,28 @@
+{
+  "name": "wttypescript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start2": "npm run create -- --watch",
+    "start": "tsc --watch && npm run onchange",
+    "create": "wt create index --secrets-file .env --bundle",
+    "update": "wt create index --secrets-file .env --bundle",
+    "onchange": "onchange '*.js' -- npm run update"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "onchange": "^4.0.0",
+    "tsc-watch": "^1.0.22",
+    "webtask-tools": "^3.2.0"
+  },
+  "devDependencies": {
+    "@types/debug": "^0.0.29",
+    "@types/express": "^4.0.35",
+    "@types/node": "^7.0.31",
+    "@webtask/serverless-webtasks": "^1.0.1",
+    "typescript": "^2.3.4"
+  }
+}

@@ -1,0 +1,1 @@
+{"version":3,"file":"Timeclock.js","sourceRoot":"","sources":["../../src/timeclocks/Timeclock.ts"],"names":[],"mappings":";;AAGA;IAoCE,YAAY,EAAU;QAVtB,WAAM,GAAG,EAAE,CAAA;QAWT,IAAI,CAAC,EAAE,GAAG,EAAE,CAAA;IACd,CAAC;IAVD,QAAQ,CAAC,CAAC;QACR,IAAI,CAAC,MAAM,CAAC,IAAI,CAAC,CAAC,CAAC,CAAA;IACrB,CAAC;IAED,cAAc,CAAC,CAAC;QACd,gBAAgB;IAClB,CAAC;CAKF"}

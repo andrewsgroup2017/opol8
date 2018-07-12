@@ -1,0 +1,67 @@
+[debug] [2018-07-10T18:21:19.418Z] ----------------------------------------------------------------------
+[debug] [2018-07-10T18:21:19.420Z] Command:       /home/ash/.nvm/versions/node/v9.11.2/bin/node /home/ash/.yarn/bin/firebase serve --only functions
+[debug] [2018-07-10T18:21:19.420Z] CLI Version:   3.19.3
+[debug] [2018-07-10T18:21:19.420Z] Platform:      linux
+[debug] [2018-07-10T18:21:19.420Z] Node Version:  v9.11.2
+[debug] [2018-07-10T18:21:19.420Z] Time:          Tue Jul 10 2018 13:21:19 GMT-0500 (CDT)
+[debug] [2018-07-10T18:21:19.420Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-07-10T18:21:19.427Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-07-10T18:21:19.427Z] > authorizing via signed-in user
+[debug] [2018-07-10T18:21:19.429Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/opol7dev  
+  
+ Tue Jul 10 2018 13:21:19 GMT-0500 (CDT)
+[debug] [2018-07-10T18:21:19.746Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-10T18:21:19.748Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/opol7dev/tokens  
+  
+ Tue Jul 10 2018 13:21:19 GMT-0500 (CDT)
+[debug] [2018-07-10T18:21:20.077Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-10T18:21:20.078Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/opol7dev  
+  
+ Tue Jul 10 2018 13:21:20 GMT-0500 (CDT)
+[debug] [2018-07-10T18:21:20.283Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/home/ash/Documents/serverless-rest-api'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2018-07-10T18:21:20.668Z] Fetching environment
+[debug] [2018-07-10T18:21:20.669Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/1099037767188:getServerAppConfig  
+  
+ Tue Jul 10 2018 13:21:20 GMT-0500 (CDT)
+[debug] [2018-07-10T18:21:20.888Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-10T18:21:20.889Z] Starting @google-cloud/functions-emulator
+[debug] [2018-07-10T18:21:20.924Z] Parsing function triggers
+[debug] [2018-07-10T18:21:30.453Z] ----------------------------------------------------------------------
+[debug] [2018-07-10T18:21:30.455Z] Command:       /home/ash/.nvm/versions/node/v9.11.2/bin/node /home/ash/.yarn/bin/firebase serve --only functions
+[debug] [2018-07-10T18:21:30.455Z] CLI Version:   3.19.3
+[debug] [2018-07-10T18:21:30.455Z] Platform:      linux
+[debug] [2018-07-10T18:21:30.455Z] Node Version:  v9.11.2
+[debug] [2018-07-10T18:21:30.455Z] Time:          Tue Jul 10 2018 13:21:30 GMT-0500 (CDT)
+[debug] [2018-07-10T18:21:30.455Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-07-10T18:21:30.462Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-07-10T18:21:30.462Z] > authorizing via signed-in user
+[debug] [2018-07-10T18:21:30.464Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/opol7dev  
+  
+ Tue Jul 10 2018 13:21:30 GMT-0500 (CDT)
+[debug] [2018-07-10T18:21:30.786Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-10T18:21:30.787Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/opol7dev/tokens  
+  
+ Tue Jul 10 2018 13:21:30 GMT-0500 (CDT)
+[debug] [2018-07-10T18:21:31.113Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-10T18:21:31.115Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/opol7dev  
+  
+ Tue Jul 10 2018 13:21:31 GMT-0500 (CDT)
+[debug] [2018-07-10T18:21:31.329Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/home/ash/Documents/serverless-rest-api'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2018-07-10T18:21:31.718Z] Fetching environment
+[debug] [2018-07-10T18:21:31.720Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/1099037767188:getServerAppConfig  
+  
+ Tue Jul 10 2018 13:21:31 GMT-0500 (CDT)
+[debug] [2018-07-10T18:21:31.920Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-10T18:21:31.921Z] Starting @google-cloud/functions-emulator
+[debug] [2018-07-10T18:21:32.967Z] Parsing function triggers
+[info] ✔  functions: webApi: http://localhost:5000/opol7dev/us-central1/webApi

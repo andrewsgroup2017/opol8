@@ -1,0 +1,8 @@
+{
+  client_id: '0cbaa9173943569cad4c0b8267981147bac0cf5d',
+  client_secret: 'be6a34d0830ab6fb3db837958d50faace249e0d1',
+  grant_type: 'password',
+  username: 'ash@andrewscarpetcleaning.com',
+  password: 'sugarlips42',
+  redirect_uri: 'https://andrewsadmin.firebaseapp.com/#/'
+}

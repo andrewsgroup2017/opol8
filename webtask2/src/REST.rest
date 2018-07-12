@@ -1,0 +1,6 @@
+POST https://wt-df70faca7cdce4f47ee338a92e42dfd1-0.sandbox.auth0-extend.com/wttypescript/create HTTP/1.1
+content-type: application/json
+
+{
+    "id": 1444044
+}
