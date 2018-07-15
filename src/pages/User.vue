@@ -22,7 +22,6 @@ export default {
   },
   data: () => ({
     loading: true,
-
   }),
 
   computed: {
@@ -32,68 +31,67 @@ export default {
   },
   mounted () {
     const vm = this
-    this.$pubnub.subscribe({
-      channels: ['ServerMessage']
-    })
-    this.$pubnub.addListener({
+    // this.$pubnub.subscribe({
+    //   channels: ['ServerMessage']
+    // })
+    // this.$pubnub.addListener({
 
-      message: function (message) {
-        console.log(message.message.key)
+    //   message: function (message) {
+    //     console.log(message.message.key)
 
-        // if (message.message.key === 'CLOCKED_STATUS') {
+    //     // if (message.message.key === 'CLOCKED_STATUS') {
 
-        //   if (message.message.value === true) {
-        //     console.log(message.message.value)
-        //     vm.user.clockedIn = true
-        //     vm.loading = false
-        //   } else {
-        //     console.log(message.message.value)
-        //     vm.user.clockedIn = false
-        //     vm.loading = false
-        //   }
+    //     //   if (message.message.value === true) {
+    //     //     console.log(message.message.value)
+    //     //     vm.user.clockedIn = true
+    //     //     vm.loading = false
+    //     //   } else {
+    //     //     console.log(message.message.value)
+    //     //     vm.user.clockedIn = false
+    //     //     vm.loading = false
+    //     //   }
 
-        // }
+    //     // }
 
-        // if (message.message.key === 'CLOCKED_IN') {
-        //   if (message.message.value === true) {
-        //     console.log('CLOCKED_IN and going to crewlist')
-        //     vm.user.clockedIn = true
-        //     vm.loading = false
-        //     vm.$router.replace({ path: '/crewlist' })
+    //     // if (message.message.key === 'CLOCKED_IN') {
+    //     //   if (message.message.value === true) {
+    //     //     console.log('CLOCKED_IN and going to crewlist')
+    //     //     vm.user.clockedIn = true
+    //     //     vm.loading = false
+    //     //     vm.$router.replace({ path: '/crewlist' })
 
-        //   } else {
-        //     console.log(message.message.value)
-        //     // this.fireNotify('error', 'Server Error')
-        //     vm.user = null
-        //     vm.loading = false
-        //     vm.$router.replace({ path: '/login' })
+    //     //   } else {
+    //     //     console.log(message.message.value)
+    //     //     // this.fireNotify('error', 'Server Error')
+    //     //     vm.user = null
+    //     //     vm.loading = false
+    //     //     vm.$router.replace({ path: '/login' })
 
-        //   }
-        // }
+    //     //   }
+    //     // }
 
-        // if (message.message.key === 'CLOCKED_OUT') {
-        //   if (message.message.description.value === true) {
-        //     console.log('CLOCKED_OUT and going to crewlist')
-        //     vm.user.clockedIn = false
-        //     vm.loading = false
-        //     vm.$router.replace({ path: '/crewlist' })
+    //     // if (message.message.key === 'CLOCKED_OUT') {
+    //     //   if (message.message.description.value === true) {
+    //     //     console.log('CLOCKED_OUT and going to crewlist')
+    //     //     vm.user.clockedIn = false
+    //     //     vm.loading = false
+    //     //     vm.$router.replace({ path: '/crewlist' })
 
-        //   } else {
-        //     console.log(message.message.value)
-        //     // this.fireMessage('error', 'Server Error')
-        //     console.log('Server Error and going to login')
-        //     // vm.user.clockedIn = false
-        //     vm.loading = false
-        //     vm.user = null
-        //     vm.$router.replace({ path: '/login' })
+    //     //   } else {
+    //     //     console.log(message.message.value)
+    //     //     // this.fireMessage('error', 'Server Error')
+    //     //     console.log('Server Error and going to login')
+    //     //     // vm.user.clockedIn = false
+    //     //     vm.loading = false
+    //     //     vm.user = null
+    //     //     vm.$router.replace({ path: '/login' })
 
-        //   }
-        // }
+    //     //   }
+    //     // }
 
-      },
-    })
+    //   },
+    // })
     this.getTimeclockStatus()
-
   },
   methods: {
 
@@ -101,6 +99,7 @@ export default {
     async  getTimeclockStatus () {
       this.loading = true
       const vm = this
+
       // console.log(this.user.id)
       // console.log(this.user.databaseKey)
       // const clockedStatus = this.axios.post('https://wt-4b2720bcf712029a2fa08942c7e9bd70-0.sandbox.auth0-extend.com/humanity', { id: this.user.id })

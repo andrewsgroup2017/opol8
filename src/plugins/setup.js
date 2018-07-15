@@ -29,7 +29,6 @@ async function setFP () {
   })
 }
 
-
 if (!fp || fp === 'undefined') {
   setFP()
 }
