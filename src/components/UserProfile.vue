@@ -95,67 +95,29 @@ export default {
     async clockIn () {
       console.log('clocking in ...')
       const vm = this
-      // const deviceId = window.localStorage.getItem('deviceId')
-      // const lat = window.localStorage.getItem('deviceInfo').lat
-      // const lon = window.localStorage.getItem('deviceInfo').lon
       const location = await utils.location
       const print = window.localStorage.getItem('fingerprint')
       const _id = vm.user.id
-       let htc = await vm.axios.post('https://wt-4b2720bcf712029a2fa08942c7e9bd70-0.sandbox.auth0-extend.com/humanity_clockin', { id: _id })
-      // if (htc.status === 13) {
-      //   console.log('employee already logged in')
-      //   return
-      // }
-      // if (htc) {
       let loc = {
         'lat': location.lat,
         'lon': location.lon
       }
-      // const TimeClock = {
-      //   employeeId: _id,
-      //   action: 'clockIn',
-      //   currentDevice: deviceId,
-      //   databaseKey: this.user.databaseKey,
-      //   location: loc,
-      //   print: print,
-      //   // createdAt: d.toString(),
-      //   // startTime: d.toString(),
-      // }
-      let serverClockStatus = await this.axios.post('http://localhost:3000/timeclocks', { TimeClock: { action: 'clockIn', employeeId: this.user.id, databaseKey: this.user.databaseKey, currentDevice: print, location: loc }})
-      // }
-      //   const d = new Date()
-      // console.log(itimeclock.data)
-      /* eslint-disable-next-line */
-      // htc.currentDevice = deviceId,
-      // htc.location = loc,
-      // htc.print = print,
-      // htc.createdAt = d.toString()
-      // itimeclock.createdAt = this.firebase.firestore().FieldValue.serverTimestamp()
-      // firebase.firestore().collection('timeclocks').set({
-      //   employeeId: _id,
-      //   currentDevice: deviceId,
-      //   location: loc,
-      //   print: print,
-      //   createdAt: d.toString(),
-      //   startTime: d.toString(),
-      // }).then(result => {
-      //   console.log(result)
-      // })
-      // console.log(vm.user.userUID)
+      let clockIn = this.$firebase.functions().httpsCallable('onTimeClockCreate')
+      clockIn({ TimeClock: { action: 'clockIn', employeeId: this.user.id, databaseKey: this.user.databaseKey, currentDevice: print, location: loc }}).then(function (result) {
+        if (result.data) {
+          console.log('CLOCKED_IN and going to crewlist')
+          // vm.$emit('user', null)
+          vm.loading = false
+          vm.$router.replace({ path: '/crews' })
 
-      // let docRef = firebase.firestore().collection('employees').doc(vm.user.userUID)
-      // docRef.update({
-      //   currentDevice: deviceId,
-      //   location: {
-      //     'lat': location.lat,
-      //     'lon': location.lon
-      //   },
-      //   print: print,
-      //   updatedAt: firebase.firestore().FieldValue.serverTimestamp()
-      // })
-      // } else {
-      //   console.log('error ')
-      // }
+        } else {
+          // this.fireNotify('error', 'Server Error')
+          // vm.$emit(vm.user, null)
+          vm.loading = false
+          vm.$router.replace({ path: '/login' })
+
+        }
+      })
     },
     async clockOut () {
       console.log('clocking out ...')
@@ -163,53 +125,24 @@ export default {
       const location = await utils.location
       const print = window.localStorage.getItem('fingerprint')
       const _id = vm.user.userUID
-       let otimeclock = await vm.axios.post('https://wt-4b2720bcf712029a2fa08942c7e9bd70-0.sandbox.auth0-extend.com/humanity_clockout', vm.user.id)
-      // if (otimeclock) {
-      //   console.log(vm.user.id)
-      //   let docRef = vm.$firebase.firestore().collection('timeclocks').where('userId', '==', vm.user.userUID).where('status', '==', 0)
-      //   docRef.get().then(function (doc) {
-      //     if (doc.exists) {
-      //       console.log('Document data:', doc.data())
-      //     } else {
-      //       // doc.data() will be undefined in this case
-      //       console.log('No such document!')
-      //     }
-      //   }).catch(function (error) {
-      //     console.log('Error getting document:', error)
-      //   })
-      // } else {
-      //   console.log(otimeclock)
-      // }
       let loc = {
         'lat': location.lat,
         'lon': location.lon
       }
+      let clockOut = this.$firebase.functions().httpsCallable('onTimeClockCreate')
+      clockOut({ TimeClock: { action: 'clockOut', currentTimeClock: this.user.currentTimeClock, employeeId: this.user.id, databaseKey: this.user.databaseKey, currentDevice: print, location: loc }}).then(function (result) {
+        if (result.data) {
+          console.log('CLOCKED_OUT and going to crewlist')
+          vm.loading = false
+          vm.$router.replace({ path: '/crews' })
 
-      let serverClockOut = await this.axios.post('http://localhost:3000/timeclocks', { TimeClock: { action: 'clockOut', employeeId: this.user.id, databaseKey: this.user.databaseKey, currentDevice: print, location: loc, currentTimeClock: this.user.currentTimeClock }})
-      // async clockIn () {
-      //   console.log('clocking in ...')
-      //   this.loading = true
-      //   let itemclock_humanity = await this.axios.post('https://wt-4b2720bcf712029a2fa08942c7e9bd70-0.sandbox.auth0-extend.com/humanity_clockIn', { id: this.user.id })
-      //   let itemclock = await this.$firestore.collection('timeclocks').add(itemclock_humanity)
-      //   this.loading = false
-      //   console.log('Document successfully updated!')
-      // },
-      // async  clockOut () {
-      //   this.loading = true
-      //   let otimeclock = await this.axios.post('https://wt-4b2720bcf712029a2fa08942c7e9bd70-0.sandbox.auth0-extend.com/humanity_clockIn', { id: this.user.id })
-      //   console.log(otimeclock)
-      //   let deviceInfo = window.localStorage.getItem('deviceInfo')
-      //   let oclock = await this.$firestore.collection('users').doc(otimeclock).update({
-      //     'location': { lat: deviceInfo.lat, lng: deviceInfo.lng },
-      //     'fingerprint': deviceInfo.fingerprint,
-      //     'out_servertime': this.$firestore.firestore.FieldValue.serverTimestamp(),
-      //     'updatedAt': this.$firestore.firestore.FieldValue.serverTimestamp()
-      //   })
-      //   this.loading = false
-      //   console.log('Document successfully updated!')
+        } else {
+          console.log('ERROR and going to login')
+          vm.loading = false
+          vm.$router.replace({ path: '/login' })
 
-
-      // },
+        }
+      })
     }
   }
 }

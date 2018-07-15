@@ -13,7 +13,7 @@ import store from './store/store'
 import './plugins/setup'
 Vue.config.productionTip = false
 import './registerServiceWorker'
-
+// import chat from './plugins/pubnubchat/chat'
 
 
 function isMobileDevice () {

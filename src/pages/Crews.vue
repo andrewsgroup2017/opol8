@@ -1,31 +1,47 @@
 <template>
-  <v-app id="login" class="primary">
-    <v-content>
-      <v-container fluid fill-height>
-        <v-layout align-center justify-center>
-          <v-flex xs12 sm12 md12 lg8>
-            <crewlist></crewlist>
-            <v-btn class="my-5" block color="primary" to="login">Add Member</v-btn>
-          </v-flex>
-        </v-layout>
-      </v-container>
-    </v-content>
-  </v-app>
+  <div id="crews">
+    <v-container fluid fill-height>
+      <v-layout align-center justify-center>
+        <v-flex xs12 sm12 md12 lg8>
+          <crewlist></crewlist>
+          <v-btn class="my-5" block color="primary" to="login">Add Member</v-btn>
+        </v-flex>
+      </v-layout>
+    </v-container>
+  </div>
 </template>
 
 <script>
 import CrewList from '../components/CrewList'
-
+import firebase from '../plugins/firebase'
 export default {
   name: 'Crews',
   components: {
     crewlist: CrewList,
-    deviceId: {}
   },
   data: () => ({
     loading: false,
-  }),
+    // currentCrew: [],
+    deviceId: {}
 
+  }),
+  mounted () {
+    const vm = this
+    // this.deviceId = window.localStorage.getItem('fingerprint')
+    // let employeesRef = this.$firebase.firestore().collection('employees').where('currentDevice', '==', window.localStorage.getItem('fingerprint'))
+    let docRef = this.$firebase.firestore().collection('devices').doc(window.localStorage.getItem('fingerprint'))
+
+    docRef.get().then(function (doc) {
+      if (doc.exists) {
+        console.log('Document data:', doc.data())
+      } else {
+        // doc.data() will be undefined in this case
+        console.log('No such document!')
+      }
+    }).catch(function (error) {
+      console.log('Error getting document:', error)
+    })
+  },
   methods: {
     login () {
       this.loading = true
@@ -34,10 +50,15 @@ export default {
       }, 1000)
     }
   },
-  mounted () {
-    this.deviceId = window.localStorage.getItem('fingerprint')
-
-  }
+  // firestore () {
+  //   return {
+  //     // Collection
+  //     // currentCrew: firebase.firestore().collection('employees').where('currentDevice', '==', this.deviceId),
+  //     currentCrew: firebase.firestore().collection('employees')
+  //     // // Doc
+  //     // ford: firestore.collection('cars').doc('ford')
+  //   }
+  // },
 }
 </script>
 <style scoped lang="css">

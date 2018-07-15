@@ -4,6 +4,7 @@ import Vuex from 'vuex'
 // import auth from './auth'
 import people from './people'
 import storage from './storage'
+import chat from './chatmodule'
 // import storage from './storage'
 // import hardware from './hardware'
 // import people from './people'
@@ -18,6 +19,7 @@ const modules = {
   common: common,
   // auth: auth,
   people: people,
+  chat: chat,
   storage: storage
 }
 

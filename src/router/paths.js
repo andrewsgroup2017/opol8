@@ -97,6 +97,19 @@ export default [
       )
   },
   {
+    path: '/pubnubchat',
+    meta: {
+      breadcrumb: true
+    },
+    name: 'PubnubChat',
+    component: (a) =>
+      import (
+        /* webpackChunkName: "routes" */
+        /* webpackMode: "lazy-once" */
+        `@/pages/PubnubChat.vue`
+      )
+  },
+  {
     path: '/user',
     meta: {
       breadcrumb: true
