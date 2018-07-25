@@ -1,0 +1,15 @@
+{
+  "name": "openwhisk-debug-nodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "aws2cloudant.js",
+  "author": "",
+  "license": "ALv2",
+  "dependencies": {
+    "aws-sdk": "^2.279.1",
+    "cloudant": "^1.10.0-NOTICE",
+    "json-colorz": "^0.2.7",
+    "prettyjson": "^1.2.1"
+  },
+  "devDependencies": {}
+}

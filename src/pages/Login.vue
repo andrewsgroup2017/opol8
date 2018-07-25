@@ -13,7 +13,7 @@
                 <v-btn v-if="!showScanner" block color="primary" @click="scan()" :loading="loading">Scan</v-btn>
                 <v-btn v-if="showScanner" block color="primary" @click="stop()" :loading="loading">Stop</v-btn>
                 <b>{{paused}}</b>
-                <v-btn v-if="debug" block color="primary" @click="onDecode('4041624')" :loading="loading">Decode</v-btn>
+                <v-btn v-if="debug" block color="primary" @click="onDecode('1444044')" :loading="loading">Decode</v-btn>
               </v-card-actions>
             </v-card>
           </v-flex>

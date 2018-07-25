@@ -1,7 +1,9 @@
 <template>
   <div>
     <v-card v-if="deviceCurrentRoute">
-      <v-card-media :src="user.avatar.large || no_pic_url" height="300">
+      <v-card-media :src="user.avatar.large || no_pic_url" height="300" v-if="user.avatar.large">
+        <img :src="user.avatar.large" v-if="!user.avatar.large">
+        <span v-else class="white--text headline">{{ firstLetter(user.name)}}</span>
         <v-layout column class="media ma-0" v-show="!loading">
           <v-card-title>
             <div>
@@ -58,8 +60,8 @@
         </v-list-tile>
         <v-list-tile href="#">
           <v-list-tile-action>
-            <v-btn v-if="!user.clockedIn" class="ml-4" block color="green" @click="clockIn()">Clock In</v-btn>
-            <v-btn v-if="user.clockedIn" class="ml-4" block color="warning" @click="clockOut()">Clock Out</v-btn>
+            <v-btn v-if="!user.clockedIn" class="ml-4" block color="green" @click="clock('clockIn')">Clock In</v-btn>
+            <v-btn v-if="user.clockedIn" class="ml-4" block color="warning" @click="clock('clockOut')">Clock Out</v-btn>
 
           </v-list-tile-action>
           <!-- <v-list-tile-action>
@@ -86,10 +88,10 @@
         </v-alert>
       </v-card-title>
       <v-card-text>
-        <v-select :items="selectItems" label="A Select List" item-text="name" item-value="name"></v-select>
+        <v-select :items="selectItems" label="Please Select" v-model="routeID" item-text="name" item-value="routeID" return-object></v-select>
       </v-card-text>
       <v-card-actions>
-        <v-btn color="primary" flat @click.stop="dialog2=false">Close</v-btn>
+        <v-btn color="primary" flat @click.stop="setDCR(routeID)">Submit</v-btn>
       </v-card-actions>
     </v-card>
     <!-- </v-dialog> -->
@@ -105,36 +107,48 @@ export default {
     return {
       loading: false,
       selectItems: [],
+      routeID: '',
       deviceCurrentRoute: null,
       no_pic_url: 'https://d3l54fgzztlejs.cloudfront.net/app/layout/images/no_avatar.png'
     }
   },
-  // computed: {
-  //   dialog2 () {
-  //     return (this.deviceCurrentRoute) ? true : false
-  //   },
-
-  // },
   async mounted () {
-    let vm = this
-    this.getDeviceRoute()
-    let smcall = this.$firebase.functions().httpsCallable('handleServiceMonster')
-    smcall({ ServiceMonsterCall: { action: 'getRoutes', }}).then(function (result) {
-      console.log(result.data.items)
-      vm.selectItems = result.data.items
-    })
-  },
-  methods: {
 
-    async getDeviceRoute () {
-      let deviceRef = this.$firebase.firestore().collection('devices').where('fingerprint', '==', window.localStorage.getItem('fingerprint'))
-      deviceRef.get().then(function (querySnapshot) {
-        querySnapshot.forEach(function (doc) {
-          this.deviceCurrentRoute = doc.data().currentRoute
-          console.log(doc.id, ' => ', doc.data())
-        })
+    let vm = this
+    // this.getDeviceRoute()
+    let dcr = window.localStorage.getItem('deviceCurrentRoute')
+    if (!dcr) {
+      let smcall = this.$firebase.functions().httpsCallable('handleServiceMonster')
+      smcall({ ServiceMonsterCall: { action: 'getActiveRoutes', }}).then(function (result) {
+        console.log(result)
+        vm.selectItems = result.data
       })
+    } else {
+      this.deviceCurrentRoute = dcr
+    }
+
+
+  },
+
+  methods: {
+    firstLetter (title) {
+      return title.charAt(0)
     },
+    setDCR (routeID) {
+      console.log(routeID)
+      this.deviceCurrentRoute = routeID.routeID
+      window.localStorage.setItem('deviceCurrentRoute', JSON.stringify(routeID))
+    },
+    // async getDeviceRoute () {
+    //   let vm = this
+    //   let deviceRef = this.$firebase.firestore().collection('devices').where('fingerprint', '==', window.localStorage.getItem('fingerprint'))
+    //   deviceRef.get().then(function (querySnapshot) {
+    //     querySnapshot.forEach(function (doc) {
+    //       vm.deviceCurrentRoute = doc.data().currentRoute
+    //       console.log(doc.id, ' => ', doc.data())
+    //     })
+    //   })
+    // },
     async clock (action) {
       console.log('clocking ', action)
       const vm = this
@@ -146,15 +160,17 @@ export default {
         'lon': location.lon
       }
       let clockIn = this.$firebase.functions().httpsCallable('onTimeClockCreate')
-      clockIn({ TimeClock: { action: action, employeeId: this.user.id, databaseKey: this.user.databaseKey, currentDevice: print, location: loc }}).then(function (result) {
+      clockIn({ TimeClock: { action: action, employeeId: this.user.id, databaseKey: this.user.databaseKey, currentTimeClock: this.user.currentTimeClock, currentDevice: print, location: loc }}).then(function (result) {
+        console.log(result)
         if (result.data) {
           console.log('CLOCKED_' + action + ' and going to crewlist')
           // vm.$emit('user', null)
           vm.loading = false
+          vm.$store.dispatch('people/setProfile', null)
           vm.$router.replace({ path: '/crews' })
 
         } else {
-          console.log('CLOCKED_' + action + ' and going to crewlist')
+          console.log('CLOCKED_' + action + ' and going to login')
           vm.loading = false
           vm.$router.replace({ path: '/login' })
 
@@ -163,7 +179,6 @@ export default {
     }
 
   },
-
 }
 
 </script>

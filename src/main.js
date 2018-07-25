@@ -14,8 +14,13 @@ import './plugins/setup'
 Vue.config.productionTip = false
 import './registerServiceWorker'
 import './plugins/humanity'
-
 // import chat from './plugins/pubnubchat/chat'
+if ((window && window.process && window.process.type) === 'renderer') {
+  Vue.prototype.$electron = true
+} else {
+  Vue.prototype.$electron = false
+}
+
 
 function isMobileDevice () {
   return (

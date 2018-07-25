@@ -1,0 +1,17 @@
+{
+  "name": "browseSDR",
+  "version": "1.0.0",
+  "description": "",
+  "main": "browseSDR.js",
+  "author": "",
+  "dependencies": {
+    "@cloudant/cloudant": "^2.3.0",
+    "axios": "^0.18.0",
+    "moment": "^2.22.2",
+    "prettyjson": "^1.2.1",
+    "qs": "^6.5.2",
+    "unirest": "^0.5.1",
+    "xml2json": "^0.11.2"
+  },
+  "devDependencies": {}
+}

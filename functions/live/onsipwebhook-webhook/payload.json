@@ -1,0 +1,8 @@
+{
+  "type": "call.dialog.created",
+  "payload": {
+    "callId": "fakecall",
+    "toUri": "sip:+19035301197@andrewsgroup.onsip.com",
+    "fromUri": "sip:ash@andrewsgroup.onsip.com"
+  }
+}

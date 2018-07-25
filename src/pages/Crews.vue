@@ -4,7 +4,7 @@
       <v-layout align-center justify-center>
         <v-flex xs12 sm12 md12 lg8>
           <crewlist></crewlist>
-          <v-btn class="my-5" block color="primary" to="login">Add Member</v-btn>
+
         </v-flex>
       </v-layout>
     </v-container>
@@ -29,18 +29,7 @@ export default {
     const vm = this
     // this.deviceId = window.localStorage.getItem('fingerprint')
     // let employeesRef = this.$firebase.firestore().collection('employees').where('currentDevice', '==', window.localStorage.getItem('fingerprint'))
-    let docRef = this.$firebase.firestore().collection('devices').doc(window.localStorage.getItem('fingerprint'))
 
-    docRef.get().then(function (doc) {
-      if (doc.exists) {
-        console.log('Document data:', doc.data())
-      } else {
-        // doc.data() will be undefined in this case
-        console.log('No such document!')
-      }
-    }).catch(function (error) {
-      console.log('Error getting document:', error)
-    })
   },
   methods: {
     login () {

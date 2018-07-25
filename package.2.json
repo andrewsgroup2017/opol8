@@ -1,0 +1,87 @@
+{
+  "name": "andrewsapp",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "sudo fuser -k 8080/tcp & NODE_DEV=development & vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "capacitor-init": "vue-cli-service capacitor-init",
+    "capacitor-copy": "vue-cli-service capacitor-copy",
+    "capacitor-open": "vue-cli-service capacitor-open",
+    "capacitor-update": "vue-cli-service capacitor-update"
+  },
+  "dependencies": {
+    "@capacitor/android": "^1.0.0-beta.1",
+    "@capacitor/cli": "^1.0.0-alpha.38",
+    "@capacitor/core": "^1.0.0-alpha.38",
+    "@firebase/app": "^0.3.3",
+    "@firebase/auth": "^0.7.0",
+    "@firebase/database": "^0.3.4",
+    "@firebase/firestore": "^0.5.6",
+    "@firebase/functions": "^0.3.0",
+    "@firebase/messaging": "^0.3.5",
+    "@firebase/storage": "^0.2.3",
+    "axios": "^0.18.0",
+    "chat-engine": "^0.9.17",
+    "chat-engine-typing-indicator": "^0.0.9",
+    "eslint": "^5.1.0",
+    "eslint-config-alloy": "^1.4.2",
+    "eslint-loader": "^2.0.0",
+    "eslint-plugin-html": "^4.0.5",
+    "eslint-plugin-vue": "^4.7.0",
+    "fingerprintjs2": "^1.8.1",
+    "font-awesome": "^4.7.0",
+    "instascan": "^1.0.0",
+    "lodash.truncate": "^4.4.2",
+    "node-gyp": "^3.7.0",
+    "nprogress": "^0.2.0",
+    "quill": "^1.3.6",
+    "register-service-worker": "^1.0.0",
+    "vee-validate": "^2.0.9",
+    "vue": "^2.5.16",
+    "vue-axios": "^2.1.2",
+    "vue-chat-engine": "^0.0.5",
+    "vue-firestore": "^0.2.9",
+    "vue-fullcalendar": "^1.0.9",
+    "vue-notification": "^1.3.12",
+    "vue-perfect-scrollbar": "^0.1.0",
+    "vue-pubnub": "^1.0.3",
+    "vue-qrcode-reader": "^0.8.5",
+    "vue-quill-editor": "^3.0.6",
+    "vue-router": "^3.0.1",
+    "vuetify": "^1.1.0-alpha.5",
+    "vuex": "^3.0.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.0.0-beta.15",
+    "@vue/cli-plugin-eslint": "^3.0.0-beta.15",
+    "@vue/cli-plugin-pwa": "^3.0.0-beta.15",
+    "@vue/cli-service": "^3.0.0-beta.15",
+    "lint-staged": "^6.0.0",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2",
+    "vue-cli-plugin-capacitor": "^1.0.0-alpha.1",
+    "vue-template-compiler": "^2.5.16"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ],
+  "description": "Andrews Admin",
+  "gitHooks": {},
+  "lint-staged": {
+    "*.js": [
+      "vue-cli-service lint",
+      "git add"
+    ],
+    "*.vue": [
+      "vue-cli-service lint",
+      "git add"
+    ]
+  },
+  "proxy": {
+    "/api": "http://localhost:3000"
+  }
+}

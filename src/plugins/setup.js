@@ -17,10 +17,10 @@ Vue.use(require('vue-pubnub'), {
   presenceTimeout: 130
 })
 let fp = window.localStorage.getItem('fingerprint')
+let dcr = window.localStorage.getItem('deviceCurrentRoute')
 const w = window
 async function setFP () {
   fp = await new Fingerprint2().get(function (result, components) {
-    console.log(result)
     let email = result + '@gmail.com'
     firebase.auth().signInWithEmailAndPassword(email, 'asdfasdf').catch(function (error) {
       console.log(error)
@@ -28,11 +28,22 @@ async function setFP () {
     w.localStorage.setItem('fingerprint', result.toString()) // a
   })
 }
+async function setDCR () {
+
+  let deviceRef = firebase.firestore().collection('devices').where('fingerprint', '==', window.localStorage.getItem('fingerprint'))
+  deviceRef.get().then(function (querySnapshot) {
+    querySnapshot.forEach(function (doc) {
+      w.localStorage.setItem('deviceCurrentRoute', doc.data().currentRoute) // a
+    })
+  })
+}
 
 if (!fp || fp === 'undefined') {
   setFP()
 }
-
+if (!dcr || dcr === 'undefined') {
+  setDCR()
+}
 Vue.mixin({
   data () {
     return {

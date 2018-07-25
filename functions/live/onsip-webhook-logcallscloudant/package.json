@@ -1,0 +1,18 @@
+{
+  "name": "logcallscloudant",
+  "version": "1.0.0",
+  "description": "",
+  "main": "logcallscloudant.js",
+  "author": "",
+  "license": "ALv2",
+  "dependencies": {
+    "@cloudant/cloudant": "^2.3.0",
+    "axios": "^0.18.0",
+    "json-colorz": "^0.2.7",
+    "moment": "^2.22.2",
+    "prettyjson": "^1.2.1",
+    "qs": "^6.5.2",
+    "unirest": "^0.5.1"
+  },
+  "devDependencies": {}
+}

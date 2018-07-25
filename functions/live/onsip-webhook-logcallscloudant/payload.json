@@ -1,0 +1,9 @@
+{
+  "type": "call.dialog.created",
+  "streamId": "db8c51f8-7305-4456-9e05-ce16771b56ca",
+  "payload": {
+    "callId": "c4d63362-0908-1237-c195-52540018a73c",
+    "toUri": "sip:carpet.cleaning@andrewsgroup.onsip.com",
+    "fromUri": "sip:19035655441@jnctn.net"
+  }
+}

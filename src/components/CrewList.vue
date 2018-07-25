@@ -1,48 +1,70 @@
 <template>
-  <v-card>
-    <v-toolbar card dense color="transparent">
-      <v-toolbar-title>
-        <!-- <h4>Route 1</h4> -->
-      </v-toolbar-title>
-      <v-spacer></v-spacer>
-    </v-toolbar>
-    <v-layout row wrap>
-      <v-flex class="ml-5" lg3 sm3 xs3>
-        <mini-statistic icon="fa fa-truck" title="7" sub-title="Minutes Away" color="indigo">
-        </mini-statistic>
-      </v-flex>
-      <v-spacer></v-spacer>
-      <v-flex lg3 sm3 xs3>
-        <mini-statistic icon="fa fa-list-ol" title="8/10+" sub-title="Tasks" color="red">
-        </mini-statistic>
-      </v-flex>
-      <v-spacer></v-spacer>
-      <v-flex class="mr-5" lg3 sm3 xs3>
-        <mini-statistic icon="fa fa-check" title="0" sub-title="Alerts" color="green">
-        </mini-statistic>
-      </v-flex>
+  <v-container>
+    <v-card v-if="deviceCurrentRoute">
+      <v-toolbar card dense color="transparent">
+        <v-toolbar-title>
+          <!-- <h4>Route 1</h4> -->
+          {{deviceCurrentRoute.name}}
+        </v-toolbar-title>
+        <v-spacer></v-spacer>
+      </v-toolbar>
+      <v-layout row wrap>
+        <v-flex class="ml-5" lg3 sm3 xs3>
+          <mini-statistic icon="fa fa-truck" title="7" sub-title="Minutes Away" color="indigo">
+          </mini-statistic>
+        </v-flex>
+        <v-spacer></v-spacer>
+        <v-flex lg3 sm3 xs3>
+          <mini-statistic icon="fa fa-list-ol" title="8/10+" sub-title="Tasks" color="red">
+          </mini-statistic>
+        </v-flex>
+        <v-spacer></v-spacer>
+        <v-flex class="mr-5" lg3 sm3 xs3>
+          <mini-statistic icon="fa fa-check" title="0" sub-title="Alerts" color="green">
+          </mini-statistic>
+        </v-flex>
+      </v-layout>
+
+      <!-- <v-divider></v-divider> -->
+      <v-card-text class="mt-3">
+        <v-list>
+          <v-list-tile v-for="item in currentCrew" :key="item.title" avatar @click="test()">
+            <v-list-tile-avatar>
+              <img :src="item.avatar.large">
+            </v-list-tile-avatar>
+
+            <v-list-tile-content>
+              <v-list-tile-title v-html="item.name"></v-list-tile-title>
+              <v-list-tile-title v-html="deviceCurrentRoute.name"></v-list-tile-title>
+
+            </v-list-tile-content>
+
+            <v-list-tile-action>
+              <v-icon :color="item.currentTimeClockStatus == 0 ? 'teal' : 'grey'">schedule</v-icon>
+            </v-list-tile-action>
+          </v-list-tile>
+        </v-list>
+        <v-btn class="my-5" block color="primary" to="login">Add Member</v-btn>
+      </v-card-text>
+    </v-card>
+
+    <v-layout align-center justify-center row fill-height v-if="!deviceCurrentRoute">
+
+      <v-card>
+        <v-card-title>
+          <v-alert :value="true" type="info">
+            <h3> A route must be selected before before initial clock in. </h3>
+          </v-alert>
+        </v-card-title>
+        <v-card-text>
+          <v-select :items="selectItems" label="Please Select" v-model="routeID" item-text="name" item-value="routeID" return-object></v-select>
+        </v-card-text>
+        <v-card-actions>
+          <v-btn color="primary" flat @click.stop="setDCR(routeID)">Submit</v-btn>
+        </v-card-actions>
+      </v-card>
     </v-layout>
-
-    <!-- <v-divider></v-divider> -->
-    <v-card-text class="mt-3">
-      <v-list>
-        <v-list-tile v-for="item in currentCrew" :key="item.title" avatar @click="test()">
-          <v-list-tile-avatar>
-            <img :src="item.avatar.large">
-          </v-list-tile-avatar>
-
-          <v-list-tile-content>
-            <v-list-tile-title v-html="item.name"></v-list-tile-title>
-          </v-list-tile-content>
-
-          <v-list-tile-action>
-            <v-icon :color="item.currentTimeClockStatus == 0 ? 'teal' : 'grey'">schedule</v-icon>
-          </v-list-tile-action>
-        </v-list-tile>
-      </v-list>
-
-    </v-card-text>
-  </v-card>
+  </v-container>
 </template>
 
 <script>
@@ -54,11 +76,11 @@ export default {
   components: { MiniStatistic },
   data () {
     return {
-      items2: [
-        { icon: 'assignment', iconClass: 'blue white--text', title: 'Vacation itinerary', subtitle: 'Jan 20, 2014' },
-        { icon: 'call_to_action', iconClass: 'amber white--text', title: 'Kitchen remodel', subtitle: 'Jan 10, 2014' }
-      ],
-      currentCrew: []
+
+      currentCrew: [],
+      deviceCurrentRoute: {},
+      selectItems: [],
+      routeID: {}
     }
   },
   computed: {
@@ -68,6 +90,24 @@ export default {
   },
   async mounted () {
     const vm = this
+    let dcr = window.localStorage.getItem('deviceCurrentRoute')
+    if (!dcr || dcr === 'undefined') {
+      let smcall = this.$firebase.functions().httpsCallable('handleServiceMonster')
+      smcall({ ServiceMonsterCall: { action: 'getActiveRoutes', }}).then(function (result) {
+        console.log(result)
+        vm.selectItems = result.data
+      })
+    } else {
+      const p = JSON.parse(dcr)
+      const p2 = {
+        stuff: p.resourceTypes,
+        name: p.row_number
+      }
+      this.deviceCurrentRoute = p2
+      console.log(this.deviceCurrentRoute.name)
+      console.log(dcr.resourceTypes)
+    }
+
     let employeesRef = this.$firebase.firestore().collection('employees').where('currentDevice', '==', window.localStorage.getItem('fingerprint'))
     employeesRef.get().then(function (querySnapshot) {
       querySnapshot.forEach(function (doc) {
@@ -75,8 +115,17 @@ export default {
         console.log(doc.id, ' => ', doc.data())
       })
     })
+    this.deviceCurrentRoute = window.localStorage.getItem('deviceCurrentRoute')
+    if (!this.deviceCurrentRoute || this.deviceCurrentRoute === 'undefined') {
+      this.deviceCurrentRoute = null
+    }
   },
   methods: {
+    setDCR (routeID) {
+      console.log(routeID)
+      this.deviceCurrentRoute = routeID
+      window.localStorage.setItem('deviceCurrentRoute', JSON.stringify(routeID))
+    },
     test () {
       console.log('filler')
     }
